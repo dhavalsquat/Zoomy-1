@@ -445,6 +445,7 @@ extension ImageZoomController: UIScrollViewDelegate {
         state.scrollViewDidZoom(scrollView)
     }
     
+   
     public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
         logger.log(atLevel: .verbose)
         state.scrollViewWillBeginZooming(scrollView, with: view)

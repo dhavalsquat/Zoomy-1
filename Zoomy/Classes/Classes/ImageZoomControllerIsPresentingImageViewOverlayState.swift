@@ -119,14 +119,15 @@ extension ImageZoomControllerIsPresentingImageViewOverlayState: ImageZoomControl
             scaleCenter = scaleCenter(from: gestureRecognizer)
         case .changed:
             owner.backgroundView.alpha = backgroundAlpha(for: currentPinchScale)
+            owner.backgroundView.isUserInteractionEnabled = false
             currentScale = currentPinchScale
         default:
-            if  currentPinchScale <= owner.minimumPinchScale ||
-                currentPinchScale < owner.settings.zoomCancelingThreshold {
+//            if  currentPinchScale <= owner.minimumPinchScale ||
+//                currentPinchScale < owner.settings.zoomCancelingThreshold {
                 dismissOverlay()
-            } else {
-                presentOverlay()
-            }
+//            } else {
+//                presentOverlay()
+//            }
         }
     }
     
@@ -283,7 +284,7 @@ private extension ImageZoomControllerIsPresentingImageViewOverlayState {
         guard let owner = owner else { return 0 }
         let delta = owner.settings.primaryBackgroundColorThreshold - owner.minimumPinchScale
         let progress = pinchScale - owner.minimumPinchScale
-        return max(min(progress/delta, 1), 0)
+        return max(min(progress/delta, 0.7), 0)
     }
     
     func containerFittingFrame(for overlayImageView: UIImageView) -> CGRect {

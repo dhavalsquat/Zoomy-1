@@ -120,10 +120,10 @@ extension ImageZoomControllerIsPresentingScrollViewOverlayState: ImageZoomContro
 
         guard let owner = owner else { return }
         
-        if  scrollView.zoomScale <= owner.minimumZoomScale ||
-            scrollView.zoomScale <= owner.zoomScale(from: owner.settings.zoomCancelingThreshold) {
+      //  if  scrollView.zoomScale <= owner.minimumZoomScale ||
+      //      scrollView.zoomScale <= owner.zoomScale(from: owner.settings.zoomCancelingThreshold) {
             dismissOverlay()
-        }
+       // }
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
